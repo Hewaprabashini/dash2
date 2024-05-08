@@ -25,13 +25,13 @@ with col1 :
 with col2 :
     date2 = pd.to_datetime(st.date_input("End Date", endDate))
 
-df = df[(df["Order Date"] >= date1) & (df["Order Date"] <= date2)].copy()
+df = df[(df[" Order Date"] >= date1) & (df["Order Date"] <= date2)].copy()
 
-st.sidebar.header("Choose your filter:")
+st. sidebar.header("Choose your filter:")
 
 
 SubCategory = st.sidebar.multiselect("Pick Sub-Category (Antecedents)", df["Sub-Category"].unique())
-SubCategoryDesc = st.sidebar.multiselect("Pick Sub-Category (Descendants)", df["Sub-Category"].unique())
+SubCategoryDesc = st.sidebar.multiselect(" Pick Sub-Category (Descendants)", df["Sub-Category"].unique())
 if not SubCategory and not SubCategoryDesc:
     filtered_df = df.copy()
 elif not SubCategoryDesc:
@@ -66,7 +66,7 @@ sub_Category_year = pd.pivot_table(
     data=filtered_df, values="Sales", index=["Sub-Category"], columns="month"
 )
 st.write(sub_Category_year.style.background_gradient(cmap="pink"))
-bar_fig = px.bar(
+bar_fig=px.bar(
     filtered_df,
     x="Sub-Category",
     y="Sales",
@@ -83,7 +83,7 @@ scatter_fig.update_layout(title="Sales Vs Profit")
 st.plotly_chart(scatter_fig, use_container_width=True)
 
 
-csv = filtered_df.to_csv(index=False).encode("utf-8")
+csv =filtered_df.to_csv(index=False).encode("utf-8")
 st.download_button(
     "Download Data as CSV",
     data=csv,
