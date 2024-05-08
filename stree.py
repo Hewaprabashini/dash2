@@ -3,7 +3,7 @@ import plotly.express as px
 import pandas as pd
 
 st.set_page_config(page_title="Superstore", page_icon=":bar_chart:", layout="wide")
-st.title("\U0001F4CA Sample Superstore EDA")
+st.title("Dashboard of global super store")
 
 f1 = st.file_uploader(':file_folder: Upload a file', type=(["csv", "xlsx"]))
 if f1 is not None:
