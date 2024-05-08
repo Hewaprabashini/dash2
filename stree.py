@@ -47,7 +47,7 @@ with st.expander("Category_view Data"):
     st.write(
         filtered_df.pivot_table(
             index="Category", columns="Sub-Category", values="Sales", aggfunc="sum"
-        ).style.background_gradient(cmap="pink")
+        ).style.background_gradient(cmap="Blues")
     )
 
 st.subheader("Sales Heatmap")
@@ -65,7 +65,7 @@ filtered_df["month"] = filtered_df["Order Date"].dt.strftime("%b")
 sub_Category_year = pd.pivot_table(
     data=filtered_df, values="Sales", index=["Sub-Category"], columns="month"
 )
-st.write(sub_Category_year.style.background_gradient(cmap="pink"))
+st.write(sub_Category_year.style.background_gradient(cmap="Blues"))
 bar_fig=px.bar(
     filtered_df,
     x="Sub-Category",
