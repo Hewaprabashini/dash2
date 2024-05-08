@@ -66,6 +66,16 @@ sub_Category_year = pd.pivot_table(
     data=filtered_df, values="Sales", index=["Sub-Category"], columns="month"
 )
 st.write(sub_Category_year.style.background_gradient(cmap="Blues"))
+bar_fig = px.bar(
+    filtered_df,
+    x="Sub-Category",
+    y="Sales",
+    title="Sub-Category vs. Sales",
+    labels={"Sales": "Total Sales", "Sub-Category": "Sub-Category"},
+)
+bar_fig.update_layout(xaxis={'categoryorder':'total descending'})
+st.plotly_chart(bar_fig, use_container_width=True)
+
 
 # Scatter plot
 scatter_fig = px.scatter(filtered_df, x="Sales", y="Profit", size="Quantity")
